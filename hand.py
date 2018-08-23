@@ -40,8 +40,7 @@ class Card:
         self.card_value = self.validate_card_value(card_string[0])
 
 
-@total_ordering
-class Hand:
+class BaseHand:
     NUMBER_OF_CARDS = 5
     cards = []
 
@@ -68,9 +67,9 @@ class Hand:
             reverse=True
         )
 
-        self.hand_value = self.get_hand_value()
-        self.hand_value_code = HAND_VALUES_ORDER.index(self.hand_value)
 
+@total_ordering
+class Hand(BaseHand):
     @classmethod
     def from_string(cls, cards_string):
         try:
@@ -78,6 +77,11 @@ class Hand:
         except AttributeError:
             raise WrongTypeException('from_string argument should be str')
         return Hand(cards=cards)
+
+    def __init__(self, cards):
+        super().__init__(cards)
+        self.hand_value = self.get_hand_value()
+        self.hand_value_code = HAND_VALUES_ORDER.index(self.hand_value)
 
     def get_hand_value(self):
         if self._has_one_pair():
