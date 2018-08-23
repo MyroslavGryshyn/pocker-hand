@@ -47,55 +47,55 @@ class HandEvaluationCase(unittest.TestCase):
         hand = Hand.from_string('4C 4D 7H 5H KD')
         hand_value = hand.get_hand_value()
 
-        self.assertEquals(hand_value, ONE_PAIR)
+        self.assertEqual(hand_value, ONE_PAIR)
 
     def test_evaluetes_flush(self):
         hand = Hand.from_string('4C 5C 7C KC 8C')
         hand_value = hand.get_hand_value()
 
-        self.assertEquals(hand_value, FLUSH)
+        self.assertEqual(hand_value, FLUSH)
 
     def test_evaluetes_set(self):
         hand = Hand.from_string('4C 4D 4H 5H KD')
         hand_value = hand.get_hand_value()
 
-        self.assertEquals(hand_value, THREE_OF_A_KIND)
+        self.assertEqual(hand_value, THREE_OF_A_KIND)
 
     def test_evaluetes_straight(self):
         hand = Hand.from_string('4D 5D 6D 7H 8D')
         hand_value = hand.get_hand_value()
 
-        self.assertEquals(hand_value, STRAIGHT)
+        self.assertEqual(hand_value, STRAIGHT)
 
     def test_evaluetes_high_card(self):
         hand = Hand.from_string('4D 5D 6D TH 8D')
         hand_value = hand.get_hand_value()
 
-        self.assertEquals(hand_value, HIGH_CARD)
+        self.assertEqual(hand_value, HIGH_CARD)
 
     def test_evaluetes_straight_flush(self):
         hand = Hand.from_string('4D 5D 6D 7D 8D')
         hand_value = hand.get_hand_value()
 
-        self.assertEquals(hand_value, STRAIGHT_FLUSH)
+        self.assertEqual(hand_value, STRAIGHT_FLUSH)
 
     def test_evaluetes_royal_flush(self):
         hand = Hand.from_string('TS JS QS KS AS')
         hand_value = hand.get_hand_value()
 
-        self.assertEquals(hand_value, ROYAL_FLUSH)
+        self.assertEqual(hand_value, ROYAL_FLUSH)
 
     def test_evaluetes_full_house(self):
         hand = Hand.from_string('TS TD TH KS KH')
         hand_value = hand.get_hand_value()
 
-        self.assertEquals(hand_value, FULL_HOUSE)
+        self.assertEqual(hand_value, FULL_HOUSE)
 
     def test_evaluetes_2_pairs(self):
         hand = Hand.from_string('TS TD 9H KS KH')
         hand_value = hand.get_hand_value()
 
-        self.assertEquals(hand_value, TWO_PAIR)
+        self.assertEqual(hand_value, TWO_PAIR)
 
 
 class HandComparisonCase(unittest.TestCase):
@@ -140,6 +140,7 @@ class HandComparisonCase(unittest.TestCase):
         one_pair_2 = Hand.from_string('AD KH JD 5C TD')
 
         self.assertTrue(one_pair > one_pair_2)
+
 
 if __name__ == '__main__':
     unittest.main()

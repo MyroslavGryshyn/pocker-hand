@@ -155,3 +155,12 @@ class Hand:
             if card_value[0] != other.counted_values[i][0]:
                 return True
         return False
+
+    def __str__(self):
+        return (
+            "<{} {}, '{}'>"
+            .format(
+                self.__class__.__name__,
+                [card.card_value + card.suit for card in self.cards],
+                self.hand_value)
+        )
